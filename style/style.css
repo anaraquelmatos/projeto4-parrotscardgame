@@ -1,3 +1,4 @@
+/*General organization*/
 body {
     background-color: #EEF9BF;
     font-family: 'Roboto', sans-serif;
@@ -9,6 +10,7 @@ body {
     padding: 0;
 }
 
+/*Game header*/
 header h1 {
     font-style: normal;
     font-weight: bold;
@@ -20,32 +22,55 @@ header h1 {
     margin-top: 40px;
 }
 
+/*Main subject (start)*/
 main {
-    width: 77%;
+    width: 65%;
     height: 100%;
     margin: 47px auto;
 
 }
 
+/*Cards*/
 .all-cards {
     display: flex;
     flex-wrap: wrap;
-    justify-content: center;
+    justify-content: space-around;
+    align-items: center;
+    width: 100%;
+    height: 300px;
+    
 }
 
 .all-cards .card {
-    display: flex;
-    justify-content: center;
-    align-items: center;
     height: 146px;
-    width: 117px;
+    width: 117px;  
+    position: relative;
+    transform-style: preserve-3d;
+    transition: 0.3s;
+}
+
+.card:active{
+    transform: scale(0.97);
+}
+
+.card.flip{
+    transform: rotateY(180deg);
+}
+
+.all-cards img {
+    width: 100px;
+   
+}
+
+.front-end, .back-end{
     border-radius: 5px;
     background: rgba(167, 233, 175, 1);
     border: 1px solid rgba(153, 206, 168, 1);
-    margin: 0 15px 30px 15px;
+    position: absolute;
+    border-radius: 5px;
+    backface-visibility: hidden;
 }
 
-.card img {
-    width: 100px;
-    height: 100px;
+.back-end{
+    transform: rotateY(180deg);
 }
