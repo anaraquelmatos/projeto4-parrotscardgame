@@ -1,3 +1,4 @@
+let firstCard, secondCard;
 let cards;
 const all = [];
 let cardHTML;
@@ -26,9 +27,9 @@ function selectCards() {
    for (let i = 0; i < cards / 2; i++) {
 
       cardHTML = `
-      <div class = "card">
-      <img class = "front-end" src="Images/front.png" data-card="${backGame[i]}"/>
-      <img class = "back-end" onclick="clickCards()" src="Images/${backGame[i]}"/>
+      <div class = "card"  data-identifier="card">
+      <img class = "front-end" data-identifier="front-face" src="Images/front.png" data-card="${backGame[i]}"/>
+      <img class = "back-end" data-identifier="back-face" onclick="clickCards()" src="Images/${backGame[i]}"/>
       </div>`
 
       all.push(cardHTML);
@@ -56,45 +57,48 @@ selectCards()
 
 const changes = document.querySelectorAll(".card");
 
-let firstCard, secondCard;
-
 function clickCards() {
+
    if (closeCard === true) return false;
+
   this.classList.add("flip");
 
    if (!firstCard) {
-      firstCard = this;
 
-      return false;
+      firstCard = this.innerHTML;
+
+      return true;
    }
 
    if (!secondCard) {
-      secondCard = this;
 
-      return false;
+      secondCard = this.innerHTML;
+
+      return true;
 
    }
 
    searchMatch();
+
 }
 
 
 function searchMatch() {
-   let = match = firstCard === secondCard;
+  let = match = firstCard === secondCard;
 
 
-  if (match) {
+  if (firstCard !== secondCard) {
 
     returnCards();
 
    }else{
-      cleanCards(match);
+      cleanCards();
  }
 
 }
 
 function returnCards() {
-   closeCard = true;
+  closeCard = true;
    setTimeout(() => {
       firstCard.classList.remove('flip');
       secondCard.classList.remove('flip');
