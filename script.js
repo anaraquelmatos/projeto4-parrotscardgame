@@ -65,14 +65,14 @@ function clickCards() {
 
    if (!firstCard) {
 
-      firstCard = this.innerHTML;
+      firstCard.innerHTML = this.innerHTML;
 
       return true;
    }
 
    if (!secondCard) {
 
-      secondCard = this.innerHTML;
+      secondCard.innerHTML = this.innerHTML;
 
       return true;
 
